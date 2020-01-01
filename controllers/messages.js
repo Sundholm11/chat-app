@@ -24,7 +24,7 @@ messagesRouter.post('/', async (request, response) => {
     }
 })
 
-messagesRouter.delete('/'), async (request, response) => {
+messagesRouter.delete('/', async (request, response) => {
     try {
         await Message.deleteMany({})
         
@@ -32,6 +32,6 @@ messagesRouter.delete('/'), async (request, response) => {
     } catch (exception) {
         console.log("Exception occured: ", exception)
     }
-}
+})
 
 module.exports = messagesRouter
