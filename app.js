@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const path = require('path')
 
-app.use(express.static(path.resolve(__dirname, '../frontend/build')))
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 const messagesRouter = require('./controllers/messages')
 
