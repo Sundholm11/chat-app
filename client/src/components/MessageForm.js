@@ -11,6 +11,7 @@ const MessageForm = (props) => {
 	const handleAddMessage = (event) => {
 		event.preventDefault()
 		props.socket.send({message})
+		props.addMessage({message})
 		setMessage('')
 	}
 

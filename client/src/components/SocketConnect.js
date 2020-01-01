@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { connectSocket, disconnectSocket } from '../reducers/socketReducer'
-import { newMessage } from '../reducers/messageReducer'
+import { initializeMessages } from '../reducers/messageReducer'
 
 import { Button } from 'semantic-ui-react'
 
@@ -11,8 +11,8 @@ const SocketConnect = (props) => {
 
 	useEffect(() => {
 		if (socket !== null) {
-			socket.on("message", message => {
-				props.addMessage({message})
+			socket.on("message", () => {
+				props.refreshMessages()
 			})
 		}
 	}, [socket])
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
 	connect: connectSocket,
 	disconnect: disconnectSocket,
-	addMessage: newMessage
+	refreshMessages: initializeMessages
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SocketConnect)
