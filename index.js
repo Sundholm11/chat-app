@@ -12,7 +12,7 @@ io.on("connection", socket => {
 
 	socket.on("message", newMessage => {
 		console.log("Message received: ", newMessage)
-		io.send(newMessage.message)
+		io.send(newMessage)
 		console.log("Message sent")
 	})
 	

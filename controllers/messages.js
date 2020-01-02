@@ -13,7 +13,8 @@ messagesRouter.post('/', async (request, response) => {
     try {
         const message = new Message({
             id: body.id,
-            message: body.message
+            message: body.message,
+            timeStamp: body.timeStamp
         })
 
         const savedMessage = await message.save()
