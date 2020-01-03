@@ -17,6 +17,7 @@ const MessageList = (props) => {
 					</List.Content>
 					<List.Icon name="user circle" size="large" verticalAlign="middle"></List.Icon>
 					<List.Content>
+						<List.Header>{message.user}</List.Header>
 						<Message message={message} />
 					</List.Content>
 					<Divider />

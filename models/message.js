@@ -8,6 +8,9 @@ const messageSchema = mongoose.Schema({
     timeStamp: {
         type: String,
         required: true
+    },
+    user: {
+        type: String
     }
 })
 
