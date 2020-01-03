@@ -34,10 +34,4 @@ if(process.env.NODE_ENV !== 'test') {
 
 app.use('/api/messages', messagesRouter)
 
-/** TODO: 
- * Add tokenExtractor
- * if using cypress - add testing router
- * add middleware errorhandler?
- */
-
 module.exports = app
