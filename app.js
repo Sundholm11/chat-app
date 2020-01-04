@@ -1,11 +1,14 @@
 const config = require('./utils/config')
 const express = require('express')
+const helmet = require('helmet')
 const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const path = require('path')
+
+app.use(helmet())
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 
