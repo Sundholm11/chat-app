@@ -13,7 +13,7 @@ const MessageList = (props) => {
 			<List relaxed>{props.messages.map(message =>
 				<List.Item key={message.id}>
 					<List.Content floated="right" >
-						{message.timeStamp}
+						{new Date(message.timeStamp).toLocaleString()}
 					</List.Content>
 					<List.Icon name="user circle" size="large" verticalAlign="middle"></List.Icon>
 					<List.Content>
