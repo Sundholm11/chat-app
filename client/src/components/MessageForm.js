@@ -13,7 +13,7 @@ const MessageForm = (props) => {
 		event.preventDefault()
 		const sentMessage = {
 			message: message,
-			timeStamp: new Date().toLocaleString(),
+			timeStamp: new Date(),
 			user: user
 		}
 		props.socket.send(sentMessage)
