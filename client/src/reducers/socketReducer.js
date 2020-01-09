@@ -3,7 +3,7 @@ import socketIOClient from 'socket.io-client'
 const socketReducer = (state = null, action) => {
 	switch(action.type) {
 		case 'CONNECT_SOCKET':
-			const socket = socketIOClient()
+			const socket = socketIOClient("https://incredible-chatapp.herokuapp.com/")
 			return socket
 		case 'DISCONNECT_SOCKET':
 			state.off()
