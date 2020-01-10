@@ -24,7 +24,6 @@ const App = (props) => {
 				</Header.Subheader>
 			</Header>
 			<MessageList />
-			<Divider />
 			{props.socket === null ? null :
 			<div>
 				<MessageForm />
