@@ -10,14 +10,18 @@ const io = socketIo(server)
 io.on("connection", socket => {
 	console.log("New client connected")
 
+	io.emit("clientCount", io.eio.clientsCount)
+
 	socket.on("message", newMessage => {
 		console.log("Message received: ", newMessage)
 		io.send(newMessage)
 		console.log("Message sent")
+		io.emit("clientCount", io.eio.clientsCount)
 	})
 	
 	socket.on("disconnect", () => {
 		console.log("Client has disconnected")
+		io.emit("clientCount", io.eio.clientsCount - 1)
 	})
 })
 
