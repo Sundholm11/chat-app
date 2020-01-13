@@ -1,57 +1,51 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import Message from './Message'
 
-import { Segment, Header, List, Divider, Grid } from 'semantic-ui-react'
+import { Segment, Header, Divider, Comment } from 'semantic-ui-react'
 
 const MessageList = (props) => {
-	const [clientCount, setClientCount] = useState(0)
-
-	const socket = props.socket
-
-	useEffect(() => {
-		if (socket !== null) {
-			socket.on("clientCount", (count) => {
-				setClientCount(count)
-			})
-		}
-	}, [socket])
+	const messageAvatars = [
+		"ade",
+		"chris",
+		"christian",
+		"daniel",
+		"elliot",
+		"helen",
+		"jenny",
+		"joe",
+		"justen",
+		"laura"
+	]
 
 	return (
 		<Segment>
-			<Grid columns="equal">
-				<Grid.Column>
-					<Header as="h2">Chat
-						<Header.Subheader>Showing previous messages and real time</Header.Subheader>
-					</Header>
-				</Grid.Column>
-				<Grid.Column textAlign="right">
-					{socket === null ? '' : `Currently connected users: ${clientCount}`}
-				</Grid.Column>
-			</Grid>
-			<Divider />
-			<List relaxed>{props.messages.map(message =>
-				<List.Item key={message.id}>
-					<List.Content floated="right" >
-						{new Date(message.timeStamp).toLocaleString()}
-					</List.Content>
-					<List.Icon name="user circle" size="large" verticalAlign="middle"></List.Icon>
-					<List.Content>
-						<List.Header>{message.user}</List.Header>
-						<Message message={message} />
-					</List.Content>
+			<Comment.Group style={{ maxWidth: "100%" }}> 
+				<Header as="h2" dividing>Chat
+					<Header.Subheader>Showing previous messages and real time</Header.Subheader>
+				</Header>
+				{props.messages.map(message =>
+				<div key={message.id}>
+					<Comment >
+						<Comment.Avatar src={`https://semantic-ui.com/images/avatar/large/${messageAvatars[Math.floor(Math.random() * messageAvatars.length)]}.jpg`} />
+						<Comment.Content>
+							<Segment basic floated="right">
+								<Comment.Metadata>{new Date(message.timeStamp).toLocaleString()}</Comment.Metadata>
+							</Segment>
+							<Comment.Author>{message.user}</Comment.Author>
+							<Comment.Text>{message.message}</Comment.Text>
+						</Comment.Content>
+					</Comment>
 					<Divider />
-				</List.Item>
-			)}
-			</List>
+				</div>
+				)}
+			</Comment.Group>
 		</Segment>
 	)
 }
 
 const mapStateToProps = (state) => {
 	return {
-		messages: state.messages,
-		socket: state.socket
+		messages: state.messages
 	}
 }
 
