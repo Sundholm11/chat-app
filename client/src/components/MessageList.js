@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import Message from '../components/Message'
 
-import { Segment, Header, Comment } from 'semantic-ui-react'
+import { Segment, Header, Comment, Grid, Divider } from 'semantic-ui-react'
 
 const MessageList = (props) => {
+	const [clientCount, setClientCount] = useState(0)
+
+	const socket = props.socket
+
+	useEffect(() => {
+		if (socket !== null) {
+			socket.on("clientCount", (count) => {
+				setClientCount(count)
+			})
+		}
+	}, [socket])
+
 	const messageAvatars = [
 		"ade",
 		"chris",
@@ -22,9 +34,17 @@ const MessageList = (props) => {
 	return (
 		<Segment>
 			<Comment.Group style={{ maxWidth: "100%" }}> 
-				<Header as="h2" dividing>Chat
-					<Header.Subheader>Showing previous messages and real time</Header.Subheader>
-				</Header>
+				<Grid columns="equal">
+					<Grid.Column>
+						<Header as="h2">Chat
+							<Header.Subheader>Showing previous messages and real time</Header.Subheader>
+						</Header>
+					</Grid.Column>
+					<Grid.Column textAlign="right">
+						{socket === null ? '' : `Currently connected users: ${clientCount}`}
+					</Grid.Column>
+				</Grid>
+				<Divider />
 				{props.messages.map(message =>
 				<Message
 					key={message.id}
@@ -38,7 +58,8 @@ const MessageList = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		messages: state.messages
+		messages: state.messages,
+		socket: state.socket
 	}
 }
 
