@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Segment, Header, Divider, Comment } from 'semantic-ui-react'
+import Message from '../components/Message'
+
+import { Segment, Header, Comment } from 'semantic-ui-react'
 
 const MessageList = (props) => {
 	const messageAvatars = [
@@ -24,20 +26,11 @@ const MessageList = (props) => {
 					<Header.Subheader>Showing previous messages and real time</Header.Subheader>
 				</Header>
 				{props.messages.map(message =>
-				<div key={message.id}>
-					<Comment >
-						<Comment.Avatar src={`https://semantic-ui.com/images/avatar/large/${messageAvatars[Math.floor(Math.random() * messageAvatars.length)]}.jpg`} />
-						<Comment.Content>
-							<Segment basic floated="right">
-								<Comment.Metadata>{new Date(message.timeStamp).toLocaleString()}</Comment.Metadata>
-							</Segment>
-							<Comment.Author>{message.user}</Comment.Author>
-							<Comment.Text>{message.message}</Comment.Text>
-						</Comment.Content>
-					</Comment>
-					<Divider />
-				</div>
-				)}
+				<Message
+					key={message.id}
+					message={message}
+					messageAvatar={`https://semantic-ui.com/images/avatar/large/${messageAvatars[Math.floor(Math.random() * messageAvatars.length)]}.jpg`}
+				/>)}
 			</Comment.Group>
 		</Segment>
 	)

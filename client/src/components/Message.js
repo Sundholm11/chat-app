@@ -1,8 +1,22 @@
 import React from 'react'
 
-const Message = ({message}) => {
+import { Segment, Divider, Comment } from 'semantic-ui-react'
+
+const Message = ({ message, messageAvatar }) => {
 	return (
-		<p>{message.message}</p>
+		<div>
+			<Comment >
+				<Comment.Avatar src={messageAvatar} />
+				<Comment.Content>
+					<Segment basic floated="right">
+						<Comment.Metadata>{new Date(message.timeStamp).toLocaleString()}</Comment.Metadata>
+					</Segment>
+					<Comment.Author>{message.user}</Comment.Author>
+					<Comment.Text>{message.message}</Comment.Text>
+				</Comment.Content>
+			</Comment>
+			<Divider />
+		</div>
 	)
 }
 
