@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Message from '../components/Message'
 
-import { Segment, Header, Comment, Grid, Divider } from 'semantic-ui-react'
+import { Segment, Header, Comment, Grid, Divider, Placeholder, Dimmer, Loader } from 'semantic-ui-react'
 
 const MessageList = (props) => {
 	const [clientCount, setClientCount] = useState(0)
@@ -45,7 +45,23 @@ const MessageList = (props) => {
 					</Grid.Column>
 				</Grid>
 				<Divider />
-				{props.messages.map(message =>
+				{props.messages.length === 0 ?
+				<Dimmer.Dimmable>
+					<Dimmer inverted active>
+						<Loader inverted>Loading</Loader>
+					</Dimmer>
+					<Placeholder fluid>
+						<Placeholder.Header image>
+								<Placeholder.Line />
+								<Placeholder.Line />
+						</Placeholder.Header>
+						<Placeholder.Header image>
+								<Placeholder.Line />
+								<Placeholder.Line />
+						</Placeholder.Header>
+					</Placeholder>
+				</Dimmer.Dimmable> :
+				props.messages.map(message =>
 				<Message
 					key={message.id}
 					message={message}
