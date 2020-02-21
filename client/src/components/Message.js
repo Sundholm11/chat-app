@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Segment, Divider, Comment } from 'semantic-ui-react'
+import { Responsive, Segment, Divider, Comment } from 'semantic-ui-react'
 
 const Message = ({ message, messageAvatar }) => {
 	return (
@@ -8,9 +8,12 @@ const Message = ({ message, messageAvatar }) => {
 			<Comment >
 				<Comment.Avatar src={messageAvatar} />
 				<Comment.Content>
-					<Segment basic floated="right">
+					<Responsive as={Segment} basic floated="right" minWidth={400}>
 						<Comment.Metadata>{new Date(message.timeStamp).toLocaleString()}</Comment.Metadata>
-					</Segment>
+					</Responsive>
+					<Responsive as={Segment} basic floated="right" minWidth={350} maxWidth={399}>
+						<Comment.Metadata>{new Date(message.timeStamp).toDateString()}</Comment.Metadata>
+					</Responsive>
 					<Comment.Author>{message.user}</Comment.Author>
 					<Comment.Text>{message.message}</Comment.Text>
 				</Comment.Content>
