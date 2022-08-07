@@ -19,12 +19,12 @@ const SocketConnect = (props) => {
 
 	return (
 		<div> {socket === null ? 
-			<div>
-				<p>Disconnected from the server</p>
+			<div style={{ paddingBottom: "10px" }}>
+				<p>Disconnected from the chat</p>
 				<Button onClick={props.connect}>Connect</Button>
 			</div> :
-			<div>
-				<p>Connected to the server</p>
+			<div style={{ paddingBottom: "10px" }}>
+				<p>Connected to the chat</p>
 				<Button onClick={props.disconnect}>Disconnect</Button>
 			</div>}
 		</div>

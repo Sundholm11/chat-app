@@ -4,6 +4,8 @@ const Message = require('../models/message')
 messagesRouter.get('/', async (request, response) => {
     const messages = await Message.find({})
 
+    console.log("Messages retrieved, total amount of messages: ", messages.length)
+
     response.json(messages.map(m => m.toJSON()))
 })
 
