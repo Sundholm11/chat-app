@@ -16,7 +16,7 @@ const messagesRouter = require('./controllers/messages')
 
 console.log('Connecting to: ', config.MONGODB_URI)
 
-mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(config.MONGODB_URI)
 	.then(() => {
 		console.log('Connected to MongoDB')
 	})
