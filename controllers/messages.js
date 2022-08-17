@@ -17,7 +17,8 @@ messagesRouter.post('/', async (request, response) => {
             id: body.id,
             message: body.message,
             timeStamp: body.timeStamp,
-            user: body.user || 'Anonymous'
+            user: body.user || 'Anonymous',
+            userImage: body.userImage || ''
         })
 
         const savedMessage = await message.save()

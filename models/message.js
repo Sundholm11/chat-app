@@ -11,6 +11,9 @@ const messageSchema = mongoose.Schema({
     },
     user: {
         type: String
+    },
+    userImage: {
+        type: String
     }
 })
 
@@ -22,4 +25,4 @@ messageSchema.set('toJSON', {
     }
 })
 
-module.exports = mongoose.model('Message', messageSchema)
+module.exports = mongoose.model('Message', messageSchema, 'messages')
