@@ -8,7 +8,14 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const path = require('path')
 
-app.use(helmet())
+app.use(
+    helmet.contentSecurityPolicy({
+        useDefaults: true,
+        directives: {
+            "img-src": ["'self'", "https: data: blob:"],
+        }
+    })
+)
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 
