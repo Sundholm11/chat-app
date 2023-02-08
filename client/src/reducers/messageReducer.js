@@ -1,4 +1,4 @@
-import messageService from '../services/messages'
+import { getAll, addNewMessage } from '../services/messages'
 
 const messageReducer = (state = [], action) => {
 	switch(action.type) {
@@ -13,7 +13,7 @@ const messageReducer = (state = [], action) => {
 
 export const initializeMessages = () => {
 	return async dispatch => {
-		const messages = await messageService.getAll()
+		const messages = await getAll()
 		dispatch({
 			type: 'INIT_MESSAGES',
 			data: messages
@@ -23,7 +23,7 @@ export const initializeMessages = () => {
 
 export const newMessage = message => {
 	return async dispatch => {
-		const newMessage = await messageService.addNewMessage(message)
+		const newMessage = await addNewMessage(message)
 		dispatch({
 			type: 'NEW_MESSAGE',
 			data: newMessage
