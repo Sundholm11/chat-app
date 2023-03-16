@@ -25,6 +25,6 @@ io.on("connection", socket => {
 	})
 })
 
-server.listen(config.PORT, () => {
-	console.log(`Server running on port ${config.PORT}`)
+server.listen(config.NODE_PORT, () => {
+	console.log(`Server running on port ${config.NODE_PORT}`)
 })

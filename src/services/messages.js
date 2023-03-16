@@ -1,12 +1,11 @@
 import axios from 'axios'
-const baseUrl = '/api/messages'
 
 export const getAll = async () => {
-	const response = await axios.get(baseUrl)
+	const response = await axios.get('/api/messages')
 	return response.data
 }
 
 export const addNewMessage = async newObject => {
-	const response = await axios.post(baseUrl, newObject)
+	const response = await axios.post('/api/messages', newObject)
 	return response.data
 }

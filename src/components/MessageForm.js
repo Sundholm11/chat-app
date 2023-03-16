@@ -27,7 +27,6 @@ const MessageForm = (props) => {
             return
         }
 
-        console.log(user)
         if ( !validateUsername(user) ) {
             setError('Username must only contain letters')
             setTimeout(() => { setError('') }, 5000)

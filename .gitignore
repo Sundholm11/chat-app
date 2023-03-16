@@ -1,7 +1,3 @@
-# Frontend
-client/node_modules
-
-# Backend
 .env
 node_modules
 requests

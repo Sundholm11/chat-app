@@ -3,7 +3,7 @@ import socketIOClient from 'socket.io-client'
 const socketReducer = (state = null, action) => {
 	switch(action.type) {
 		case 'CONNECT_SOCKET':
-			const socket = socketIOClient('https://chat-app-ovoq.onrender.com/')
+			const socket = socketIOClient(process.env.SOCKET_ENDPOINT)
 			return socket
 		case 'DISCONNECT_SOCKET':
 			state.off()
