@@ -1,7 +1,7 @@
 {
-	"name": "chat-app-back",
-	"version": "0.0.1",
-	"description": "Backend for my chat app",
+	"name": "chat-app",
+	"version": "1.0.0",
+	"description": "Fullstack chat-app",
 	"author": "Daniel Sundholm",
 	"license": "MIT",
 	"private": true,
